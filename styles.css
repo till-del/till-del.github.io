@@ -1,6 +1,6 @@
 :root {
-  --bg: #f5efe4;
-  --panel: rgba(255, 252, 247, 0.88);
+  --bg: #a31212;
+  --panel: rgba(255, 247, 247, 0.9);
   --text: #1d1b18;
   --muted: #6c6256;
   --accent: #0f766e;
@@ -18,8 +18,8 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, #fff6d9 0, transparent 32%),
-    linear-gradient(135deg, #f0e7d8 0%, #d6e8e2 100%);
+    radial-gradient(circle at top left, rgba(255, 214, 214, 0.32) 0, transparent 30%),
+    linear-gradient(135deg, #7d0d0d 0%, var(--bg) 55%, #cf2f2f 100%);
 }
 
 a {
