@@ -5,6 +5,8 @@
   --text: #1d120f;
   --muted: #6f4f49;
   --accent: #fff1b8;
+  --leaf: #2f7d4f;
+  --leaf-dark: #1f5f3b;
   --shadow: 0 24px 60px rgba(33, 8, 8, 0.28);
 }
 
@@ -13,14 +15,104 @@
 }
 
 body {
+  position: relative;
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
   background:
+    radial-gradient(circle at bottom left, rgba(56, 133, 86, 0.18) 0, transparent 25%),
+    radial-gradient(circle at bottom right, rgba(81, 153, 92, 0.16) 0, transparent 22%),
     radial-gradient(circle at top left, rgba(255, 236, 168, 0.2) 0, transparent 24%),
     radial-gradient(circle at top right, rgba(255, 117, 24, 0.2) 0, transparent 22%),
     linear-gradient(180deg, #4e0202 0%, var(--bg) 45%, #cb3d1b 100%);
+}
+
+.background-art {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.plant {
+  position: absolute;
+  bottom: -2rem;
+  width: 260px;
+  height: 520px;
+  opacity: 0.92;
+}
+
+.plant-left {
+  left: -1.5rem;
+}
+
+.plant-right {
+  right: -1.5rem;
+  transform: scaleX(-1);
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  height: 72%;
+  margin-left: -5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #87c493 0%, var(--leaf-dark) 100%);
+}
+
+.leaf {
+  position: absolute;
+  width: 110px;
+  height: 52px;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #88cf8f 0%, var(--leaf) 55%, var(--leaf-dark) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.leaf::after {
+  content: "";
+  position: absolute;
+  inset: 8px 14px;
+  border-radius: 100% 0 100% 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.22);
+  transform: rotate(-14deg);
+}
+
+.plant-left .leaf-1,
+.plant-right .leaf-1 {
+  bottom: 2.5rem;
+  left: 52%;
+  transform: rotate(-18deg);
+}
+
+.plant-left .leaf-2,
+.plant-right .leaf-2 {
+  bottom: 7.5rem;
+  left: 8%;
+  transform: rotate(18deg);
+}
+
+.plant-left .leaf-3,
+.plant-right .leaf-3 {
+  bottom: 13.5rem;
+  left: 54%;
+  transform: rotate(-12deg);
+}
+
+.plant-left .leaf-4,
+.plant-right .leaf-4 {
+  bottom: 20rem;
+  left: 4%;
+  transform: rotate(16deg);
+}
+
+.plant-right .leaf-5 {
+  bottom: 27rem;
+  left: 56%;
+  transform: rotate(-14deg);
 }
 
 a {
@@ -29,6 +121,8 @@ a {
 }
 
 .page {
+  position: relative;
+  z-index: 1;
   width: min(920px, calc(100% - 2rem));
   margin: 0 auto;
   padding: 4rem 0 5rem;
@@ -208,6 +302,12 @@ h2 {
 }
 
 @media (max-width: 860px) {
+  .plant {
+    width: 190px;
+    height: 420px;
+    opacity: 0.72;
+  }
+
   .hero,
   .grid {
     grid-template-columns: 1fr;
@@ -215,6 +315,15 @@ h2 {
 }
 
 @media (max-width: 640px) {
+  .background-art {
+    opacity: 0.55;
+  }
+
+  .plant {
+    width: 150px;
+    height: 320px;
+  }
+
   .page {
     width: min(100% - 1rem, 920px);
     padding: 1rem 0 2rem;
